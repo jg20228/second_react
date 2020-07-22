@@ -1,33 +1,40 @@
 import React, { Component } from "react";
+import Post from "./Post";
+import styled from "styled-components";
 
 class App extends Component {
-  changeFocus = () => {
-    this.input.focus();
-    this.mydiv.style.backgroundColor = "yellow";
+  //배열을 하나(데이터) 만듬
+  //이 데이터를 바인딩해서 뿌릴것이다.
+  state = {
+    post: [
+      {
+        id: 1,
+        title: "제목1",
+      },
+      {
+        id: 2,
+        title: "제목2",
+      },
+      {
+        id: 3,
+        title: "제목3",
+      },
+    ],
   };
 
   render() {
+    const ContainerBox = styled.div`
+      display: grid;
+      justify-content: center;
+    `;
+
     return (
-      <div>
-        <input
-          ref={(ref) => {
-            this.input = ref;
-          }}
-          type="text"
-          placeholder="Username"
-        />
-        <input type="text" placeholder="password" />
-
-        <div
-          ref={(ref) => {
-            this.mydiv = ref;
-          }}
-        >
-          fasd
-        </div>
-
-        <button onClick={this.changeFocus}>포커스 이동</button>
-      </div>
+      //데이터를 뿌림
+      <ContainerBox>
+        {this.state.post.map((post) => {
+          return <Post id={post.id} title={post.title} />;
+        })}
+      </ContainerBox>
     );
   }
 }
