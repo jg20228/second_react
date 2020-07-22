@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //추가 concat
+      let a = [
+        { id: 1, username: "ssar" },
+        { id: 2, username: "ssar" },
+      ];
+      console.log(a);
+      let b = {
+        id: 3,
+        username: "kaka",
+      };
+      a = a.concat(5);
+      console.log(a);
+      //삭제 filter
+      console.log("----------------");
+      let aa = [1, 2, 3, 4];
+      console.log(aa);
+      let bb = aa.filter((n) => n != 3);
+      console.log(bb);
+
+      console.log("----------------");
+      //오브젝트라면
+      let aaa = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+      console.log(aaa);
+      let bbb = aaa.filter((n) => n.id != 3);
+      console.log(bbb);
+    </script>
+  </body>
+</html>
