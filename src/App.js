@@ -37,11 +37,26 @@ class App extends Component {
       });
     };
 
+    //map을 사용해서 수정만들기 2번데이터 수정
+    const update = () => {
+      const data = {
+        id: 2,
+        title: "제목200",
+      };
+
+      this.setState({
+        posts: this.state.posts.map((post) =>
+          post.id === 2 ? { ...post, ...data } : post
+        ),
+      });
+    };
+
     return (
       //데이터를 뿌림, JSX 문법 onClick 조심
       <ContainerBox>
         <button onClick={del}>삭제</button>
         <button onClick={add}>추가</button>
+        <button onClick={update}>수정</button>
         {this.state.posts.map((post) => {
           return <Post id={post.id} title={post.title} />;
         })}

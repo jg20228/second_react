@@ -32,23 +32,86 @@
       //const c = [...a, ...b];
       //console.log(c);
 
-      //스프레드 연산자 = 오브젝트 결합
+      //스프레드 연산자 = 오브젝트 덮어씀+결합
       // const a = { id: 1, name: "홍길동" };
       // const b = a; //<-얕은 복사 값이 들어가는게 아니라 주소를 참조함
 
       // const z = { ...a, id: 2, name: "임꺽정" }; //이렇게 넣으면 name값을 변경 시켜줌
       //console.log(z);
 
-      // 스프레드 연산자 = 컬렉션(배열[오브젝트,오브젝트]) 오브젝트 결합
+      // 스프레드 연산자 = 컬렉션(배열[오브젝트,오브젝트]) 오브젝트 덮어씀
       //겉이 배열이면 어차피 결합
 
-      //스프레드 연산자 = 오브젝트 결합
+      //스프레드 연산자 = 오브젝트 덮어씀
       //const a = { a: 1, b: 2, c: 3, d: 4 };
       //const aa = {...a} 중괄호 넣어야 오브젝트 타입
       //const b = { d: 100, e: 101, f: 102 };
       //const c = a.concat(b); 배열이 아니라서 안됨
       //const c = { ...a, ...b }; //오브젝트 결합하면 중복이 제거됨!
       //console.log(c);
+
+      //검색 기능은 filter를 이용
+      //const names = ["홍길동", "전우치", "홍길순"];
+      //const i = names[0].indexOf("홍"); //문자열의 시작값을 찾음 ,못찾으면 -1
+      //console.log(i);
+
+      //const fillterNames = names.filter(
+      //  (name) => name.indexOf("홍") !== -1
+      //  ); //필터안에는 함수 들어가는 자리
+
+      // console.log(fillterNames);
+
+      //2번째 '전우치' 를 수정할려면 map을 사용한다.
+      const users = [
+        { id: 1, name: "홍길동", phone: "2222" },
+        { id: 2, name: "전우치", phone: "3333" },
+        { id: 3, name: "홍길순", phone: "4444" },
+      ];
+
+      //수정할 데이터
+      const requesetUser = { id: 3, name: "리액트" };
+
+      const newUsers = users.map((user) =>
+        user.id === 3 ? { ...user, ...requesetUser } : user
+      ); //map도 함수를 쓰는데  return type이 data이다.
+
+      console.log(newUsers);
+
+      //위와 같은것을 간단하게 쓰다가
+      //나중에 복잡해지면 라이브러리 immer를 사용 (대규모 프로젝트) 지금X
+
+      //숙제 - 수정버튼 만들기
+
+      //위와 같은것을 왜 사용하는지?
+      //state ={
+      //  num [1,2],
+      // phone:[010,011,222]
+      //};
+
+      //num 또는 phone 바뀌던 랜더링이 일어날때
+      //이 페이지 리랜더링하러 갈때 Viture Dom에서 체킹로직으로 연산을 함
+      //위 페이지로 갈때마다 연산이 무조건 일어난다.
+      //만약 데이터가 num이 1만건, phone이 1억건이 있을때
+      //누군가 바뀌면 계속 체킹로직으로 연산을함.
+
+      //연산으로 체크하고 랜더링함!
+      //shouldComponentUpdate -> 연산할까 말까 물어보는것
+
+      //얕은 복사를 하면 레퍼런스가 똑같고 깊은 복사를 하면 새로운 레퍼런스를 만든다.
+      //그래서 깊은 복사를 한 값은 새로운 오브젝트로 만들며, 이 값이랑
+      //PrevState를 비교하면서 리액트의 연산을 컨트롤 할 수 있음.
+
+      //if(prevState.num === state){
+      //같으면 return false -> 연산자체가 필요 없으니까
+      //}else { return true}
+
+      //State는 항상 바뀐다. PrevState
+
+      //레퍼런스 주소만 비교하면 되니까 불변성 유지하기가 좋다.
+      //새로운 오브젝트를 만들어서 변경시킨다.
+      //리액트가 멍청하게 연산하는것을 컨트롤 할 수 있다.
+
+      //->리액트의 성능향상에 도움이됨
     </script>
   </body>
 </html>
