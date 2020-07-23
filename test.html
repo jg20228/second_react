@@ -7,46 +7,48 @@
   </head>
   <body>
     <script>
-      //추가 concat
-      let a = [
-        { id: 1, username: "ssar" },
-        { id: 2, username: "ssar" },
-      ];
-      console.log(a);
-      let b = {
-        id: 3,
-        username: "kaka",
-      };
-      a = a.concat(5);
-      console.log(a);
-      //삭제 filter
-      console.log("----------------");
-      let aa = [1, 2, 3, 4];
-      console.log(aa);
-      let bb = aa.filter((n) => n != 3);
-      console.log(bb);
-
-      console.log("----------------");
-      //오브젝트라면
-      let aaa = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
-      console.log(aaa);
-      let bbb = aaa.filter((n) => n.id != 3);
-      console.log(bbb);
-      console.log("----------------");
       //중간요소추가 slice+concat
-      const d = [1, 2, 3];
-      // console.log(1, d);
-      // const e = d.slice(0, 2);
-      //console.log(2, e);
-      //const f = e.concat(4);
-      //console.log(3, f);
-      //const g = d.slice(2, 3);
-      //console.log(4, g);
+      //const a = [1, 2, 3];
+
+      //완전 새로운 배열에 넣을때 좋음, 깊은 복사
+      //const aa = [...a];
 
       //해당 요소를 찾아서 값을 꼭 집어 넣는것은 안된다.
       // 이유->?
-      const e = d.slice(0, 2).concat(4, d.slice(2, 3));
-      console.log(e);
+
+      //const b = a.slice(0, 2).concat(4, a.slice(2, 3));
+      //console.log(b);
+
+      //const b = [...a.slice(0, 2), 4, ...a.slice(2, 3)];
+      //console.log(b);
+
+      //스프레드 연산자 = 배열 결합
+      //const a = [1, 2, 3];
+      //console.log(a);
+      //...은 스프레드 연산이다. 해당배열의 값을 for문처럼 뿌려줌
+      //console.log(...a);
+      //const b = [3, 4, 5];
+      //결합(배열) 오브젝트 할때는 스프레드 연산자가 사용하는게 좋다.
+      //const c = [...a, ...b];
+      //console.log(c);
+
+      //스프레드 연산자 = 오브젝트 결합
+      // const a = { id: 1, name: "홍길동" };
+      // const b = a; //<-얕은 복사 값이 들어가는게 아니라 주소를 참조함
+
+      // const z = { ...a, id: 2, name: "임꺽정" }; //이렇게 넣으면 name값을 변경 시켜줌
+      //console.log(z);
+
+      // 스프레드 연산자 = 컬렉션(배열[오브젝트,오브젝트]) 오브젝트 결합
+      //겉이 배열이면 어차피 결합
+
+      //스프레드 연산자 = 오브젝트 결합
+      //const a = { a: 1, b: 2, c: 3, d: 4 };
+      //const aa = {...a} 중괄호 넣어야 오브젝트 타입
+      //const b = { d: 100, e: 101, f: 102 };
+      //const c = a.concat(b); 배열이 아니라서 안됨
+      //const c = { ...a, ...b }; //오브젝트 결합하면 중복이 제거됨!
+      //console.log(c);
     </script>
   </body>
 </html>
