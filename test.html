@@ -32,6 +32,21 @@
       console.log(aaa);
       let bbb = aaa.filter((n) => n.id != 3);
       console.log(bbb);
+      console.log("----------------");
+      //중간요소추가 slice+concat
+      const d = [1, 2, 3];
+      // console.log(1, d);
+      // const e = d.slice(0, 2);
+      //console.log(2, e);
+      //const f = e.concat(4);
+      //console.log(3, f);
+      //const g = d.slice(2, 3);
+      //console.log(4, g);
+
+      //해당 요소를 찾아서 값을 꼭 집어 넣는것은 안된다.
+      // 이유->?
+      const e = d.slice(0, 2).concat(4, d.slice(2, 3));
+      console.log(e);
     </script>
   </body>
 </html>
