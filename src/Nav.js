@@ -1,12 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
     <div>
       <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/about">
           Navbar
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
